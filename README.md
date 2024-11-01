@@ -3,6 +3,7 @@ Visualisation and summarisation of the Street lengths of each "Gemeinde" (villag
 It shows three points, one for the smallest street in the respective "Gemeinde" (village), 
 one with the average street length and one for the longest.
 The cantons are ordered alphabetically.
+Data for the CSV has been taken from [here](https://opendata.swiss/de/dataset/strassenlange-ohne-nationalstrassen-nach-gemeinde2).
 
 # Technologies
 I used [Pandas](http://pandas.pydata.org/) and [Matplotlib](https://matplotlib.org).
