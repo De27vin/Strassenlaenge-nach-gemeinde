@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv("daten-opendata-swiss.csv", sep=";")
 
+daten_pro_kanton = df.groupby("GEO_CANT")["VALUE"].agg(["max", "mean", "min"]).reset_index()
 
-kantone = ["ZH", "BE", "LU", "UR", "SZ"]
-laenge_laengste = [100, 150, 120, 130, 140]
-laenge_durchschnitt = [80, 110, 90, 100, 95]
-laenge_kuerzeste = [60, 70, 50, 65, 55]
-
+kantone = daten_pro_kanton["GEO_CANT"]
+laenge_laengste = daten_pro_kanton["max"]
+laenge_durchschnitt = daten_pro_kanton["mean"]
+laenge_kuerzeste = daten_pro_kanton["min"]
 
 fig, ax = plt.subplots(figsize=(8, 5))
 
@@ -18,13 +18,13 @@ ax.scatter(kantone, laenge_durchschnitt, color='green', marker='o')
 ax.scatter(kantone, laenge_kuerzeste, color='red', marker='^')
 
 plt.title("Strassenlängen")
-plt.xlabel("Länge")
-plt.ylabel("Kantone")
+plt.xlabel("Kantone")
+plt.ylabel("Länge der Strassen")
 
 plt.legend(["Längste", "Durchschnitt", "Kürzeste"])
 plt.show()
 
 # Auswertungsideen:
-# Y = Länge der Strassen (Längste, Kürzeste und Durchschnitt), X = Kantone (nach anzahl Strassen aufsteigend)
+# Y = Länge der Strassen (Längste, Kürzeste und Durchschnitt), X = Kantone (alphabetische Reihenfolge)
 
 
